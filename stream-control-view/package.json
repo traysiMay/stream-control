@@ -16,6 +16,8 @@
     "webpack-dev-server": "^3.10.2"
   },
   "dependencies": {
-    "socket.io-client": "^2.3.0"
+    "css-loader": "^3.4.2",
+    "socket.io-client": "^2.3.0",
+    "style-loader": "^1.1.3"
   }
 }

@@ -1,18 +1,15 @@
 import React from "react";
-import io from "socket.io-client";
+// import io from "socket.io-client";
+import Form from "./Form";
 
-const socket = io.connect("ws://localhost:4000");
+// const socket = io.connect("ws://localhost:4000");
 
-function App() {
+function App(props) {
   return (
     <div className="App">
-      <button
-        onClick={() => {
-          socket.emit("msg", Math.random());
-        }}
-      ></button>
+      <Form />
     </div>
   );
 }
 
-export default App;
+export default App
