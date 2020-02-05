@@ -1,0 +1,15 @@
+#names-container {
+    font-size:60px;
+    display:flex;
+    justify-content: space-evenly;
+    margin: 30rem 1rem;
+}
+.names {
+    background: aqua;
+    width: 11rem;
+    text-align: center;
+    padding: 1rem;
+    box-shadow: 11px 9px #ff1ace;
+    color: white;
+    text-shadow: 3px 4px black;
+}
