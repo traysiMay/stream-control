@@ -11,6 +11,12 @@ ws.on("connection", socket => {
     console.log(names);
     socket.broadcast.emit("new_names", names);
   });
+  socket.on("change_view", view => {
+    socket.broadcast.emit("change_view", view);
+  });
+  socket.on("slider", slider => {
+    socket.broadcast.emit("slider", slider);
+  });
 });
 
 server.listen(4000);

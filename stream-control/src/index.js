@@ -1,36 +1,22 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { createStore } from "redux"
-import { Provider } from "react-redux"
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import { createStore, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
+import { Provider } from "react-redux";
+import "./index.css";
+import App from "./App";
+import * as serviceWorker from "./serviceWorker";
+import reducers from "./reducers";
+import { CONNECT } from "./actions";
 
-const initialState = {
-    names: {
-        first: null,
-        second: null,
-        third: null
-    }
-}
-
-export const UPDATE_NAME = "UPDATE_NAME"
-
-const reducer = (state = initialState, action) => {
-    switch (action.type) {
-        case UPDATE_NAME:
-            const { value, field } = action
-            const newNames = { ...state.names, [field]: value }
-            return { ...state, names: { ...newNames } }
-        default:
-            return state
-    }
-}
-
-const store = createStore(reducer)
-
-
-ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
+const store = createStore(reducers, applyMiddleware(thunk));
+store.dispatch({ type: CONNECT });
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("root")
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
